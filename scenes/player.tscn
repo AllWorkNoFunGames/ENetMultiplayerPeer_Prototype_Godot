@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cpd2gemwnev68"]
+
+[ext_resource type="Script" uid="uid://ca452vyge78x0" path="res://src/player.gd" id="1_3vyb7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bupin"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_52bhu"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3vyb7"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:prettyName")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:speed")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:jump_velocity")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath(".:networkPlayerNumber")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+
+[node name="Player" type="CharacterBody3D" unique_id=515148535]
+script = ExtResource("1_3vyb7")
+sens = null
+speed = null
+jump_velocity = null
+networkPlayerNumber = null
+prettyName = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=9184819]
+shape = SubResource("CapsuleShape3D_bupin")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=908573935]
+mesh = SubResource("CapsuleMesh_52bhu")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1998978400]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=302177033]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1671644964]
+replication_config = SubResource("SceneReplicationConfig_3vyb7")

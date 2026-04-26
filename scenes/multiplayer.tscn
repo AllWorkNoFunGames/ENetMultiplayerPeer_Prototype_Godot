@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b8ga7e8fodquk"]
+
+[ext_resource type="Script" uid="uid://bhxnqekxu06ty" path="res://src/network/multiplayer.gd" id="1_crvko"]
+[ext_resource type="PackedScene" uid="uid://cpd2gemwnev68" path="res://scenes/player.tscn" id="2_pjkx2"]
+
+[node name="Multiplayer" type="Node" unique_id=1256054321]
+script = ExtResource("1_crvko")
+player_scene = ExtResource("2_pjkx2")

@@ -1,0 +1,8 @@
+# Godot-specific ignores
+.godot/
+*.translation
+*.import/
+
+# General ignores
+.tmp/
+*.log

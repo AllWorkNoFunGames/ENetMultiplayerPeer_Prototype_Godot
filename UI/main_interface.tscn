@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://croxmt8ellr83"]
+
+[ext_resource type="Script" uid="uid://d2ahmvb3ji114" path="res://src/UI/ui_handler.gd" id="1_5c2yr"]
+[ext_resource type="Script" uid="uid://5vih23rt4dss" path="res://UI/TextTabManager.gd" id="2_s06ed"]
+[ext_resource type="Script" uid="uid://dfxs2qmm17o2f" path="res://UI/ChatTextBox.gd" id="3_xd0u0"]
+
+[node name="MainInterface" type="Control" unique_id=481017467]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5c2yr")
+
+[node name="TextBoxPanelContainer" type="PanelContainer" parent="." unique_id=1029468684]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -300.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TextBoxPanelContainer" unique_id=2020289199]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="TextBoxPanelContainer/MarginContainer" unique_id=1273150371]
+layout_mode = 2
+current_tab = 0
+script = ExtResource("2_s06ed")
+
+[node name="Chat" type="VBoxContainer" parent="TextBoxPanelContainer/MarginContainer/TabContainer" unique_id=1246403734]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ChatContainer" type="VBoxContainer" parent="TextBoxPanelContainer/MarginContainer/TabContainer/Chat" unique_id=4385843]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextBox" type="Label" parent="TextBoxPanelContainer/MarginContainer/TabContainer/Chat/ChatContainer" unique_id=1399980821]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+script = ExtResource("3_xd0u0")
+
+[node name="InputBox" type="LineEdit" parent="TextBoxPanelContainer/MarginContainer/TabContainer/Chat/ChatContainer" unique_id=1000302791]
+clip_contents = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "write here"
+
+[node name="Buttons" type="VBoxContainer" parent="TextBoxPanelContainer/MarginContainer/TabContainer" unique_id=1431234268]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ButtonContainer" type="HFlowContainer" parent="TextBoxPanelContainer/MarginContainer/TabContainer/Buttons" unique_id=5576945]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="TextBoxPanelContainer/MarginContainer/TabContainer/Buttons/ButtonContainer" unique_id=329736278]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="TextBoxPanelContainer/MarginContainer/TabContainer/Buttons/ButtonContainer" unique_id=1371311430]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="TextBoxPanelContainer/MarginContainer/TabContainer/Buttons/ButtonContainer" unique_id=758130000]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="TextBoxPanelContainer/MarginContainer/TabContainer/Buttons/ButtonContainer" unique_id=285046256]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="TextBoxPanelContainer/MarginContainer/TabContainer/Buttons/ButtonContainer" unique_id=382015800]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Button6" type="Button" parent="TextBoxPanelContainer/MarginContainer/TabContainer/Buttons/ButtonContainer" unique_id=91303779]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Button7" type="Button" parent="TextBoxPanelContainer/MarginContainer/TabContainer/Buttons/ButtonContainer" unique_id=281030938]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Button8" type="Button" parent="TextBoxPanelContainer/MarginContainer/TabContainer/Buttons/ButtonContainer" unique_id=2020813986]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Button9" type="Button" parent="TextBoxPanelContainer/MarginContainer/TabContainer/Buttons/ButtonContainer" unique_id=194240352]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Button10" type="Button" parent="TextBoxPanelContainer/MarginContainer/TabContainer/Buttons/ButtonContainer" unique_id=557497987]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Tab3" type="VBoxContainer" parent="TextBoxPanelContainer/MarginContainer/TabContainer" unique_id=2026753756]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[connection signal="text_submitted" from="TextBoxPanelContainer/MarginContainer/TabContainer/Chat/ChatContainer/InputBox" to="." method="_on_input_box_text_submitted"]
