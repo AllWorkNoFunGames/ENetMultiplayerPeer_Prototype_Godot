@@ -5,7 +5,6 @@ const ADDRESS = "127.0.0.1"
 
 # Reference to your player character
 @export var player_scene: PackedScene
-@export var player_list = []
 
 func _ready():
 	multiplayer.peer_connected.connect(on_player_connected)
@@ -47,8 +46,7 @@ func spawn_player(id):
 	var player = player_scene.instantiate()
 	
 	player.name = str(id) # Name must be identical across all peers
-	player.set_multiplayer_authority(id)
-	
+
 	if id == 1: 
 		player.prettyName = "Server"
 		player.networkPlayerNumber = 1

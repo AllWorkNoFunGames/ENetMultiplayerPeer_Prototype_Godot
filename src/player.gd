@@ -9,6 +9,10 @@ extends CharacterBody3D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+func _enter_tree():
+	if name.is_valid_int():
+		set_multiplayer_authority(name.to_int())
+
 func _ready():
 	StartWrapper.print_to_chat("Player node " + name + " authority is: " + str(get_multiplayer_authority()) + " | Local ID: " + str(multiplayer.get_unique_id()))
 
