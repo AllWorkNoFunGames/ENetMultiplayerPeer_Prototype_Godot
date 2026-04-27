@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://croxmt8ellr83"]
 
-[ext_resource type="Script" uid="uid://d2ahmvb3ji114" path="res://src/UI/ui_handler.gd" id="1_5c2yr"]
+[ext_resource type="Script" uid="uid://1kj4ax6xjcp8" path="res://src/UI/ui_handler.gd" id="1_kcbf2"]
 [ext_resource type="Script" uid="uid://5vih23rt4dss" path="res://UI/TextTabManager.gd" id="2_s06ed"]
 [ext_resource type="Script" uid="uid://dfxs2qmm17o2f" path="res://UI/ChatTextBox.gd" id="3_xd0u0"]
 
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5c2yr")
+script = ExtResource("1_kcbf2")
 
 [node name="TextBoxPanelContainer" type="PanelContainer" parent="." unique_id=1029468684]
 layout_mode = 1

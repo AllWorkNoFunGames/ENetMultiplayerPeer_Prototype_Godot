@@ -2,13 +2,23 @@ extends Node
 
 const PORT = 8000
 const ADDRESS = "127.0.0.1"
+const CHAT_HANDLER_SCRIPT := preload("res://src/network/chat_handler.gd")
 
 # Reference to your player character
 @export var player_scene: PackedScene
 
 func _ready():
+	_ensure_chat_handler()
 	multiplayer.peer_connected.connect(on_player_connected)
 	multiplayer.peer_disconnected.connect(on_player_disconnected)
+
+func _ensure_chat_handler() -> void:
+	if has_node("Chat"):
+		return
+
+	var chat_handler := CHAT_HANDLER_SCRIPT.new()
+	chat_handler.name = "Chat"
+	add_child(chat_handler)
 	
 func host_game():
 	var peer = ENetMultiplayerPeer.new()
