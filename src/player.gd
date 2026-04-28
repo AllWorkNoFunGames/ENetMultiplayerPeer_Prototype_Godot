@@ -15,6 +15,8 @@ func _enter_tree():
 
 func _ready():
 	StartWrapper.print_to_chat("Player node " + name + " authority is: " + str(get_multiplayer_authority()) + " | Local ID: " + str(multiplayer.get_unique_id()))
+	# Make sure each peer looks through only their own controlled player.
+	$CameraPivot/Camera3D.current = is_multiplayer_authority()
 
 func _input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and is_multiplayer_authority():
