@@ -1,5 +1,7 @@
 extends Node
 
+var http = Multiplayer.get_node("HTTPRequest")
+
 
 func _filter_chat_message(raw_text: String) -> String:
 	var clean := raw_text.strip_edges()
@@ -36,3 +38,6 @@ func submit_chat_message(raw_text: String) -> void:
 @rpc("authority", "call_local", "reliable")
 func broadcast_chat_message(sender_id: int, content: String) -> void:
 	StartWrapper.print_to_chat("[%s] %s" % [str(sender_id), content])
+	# This RPC runs on every peer; persist to backend only from the server.
+	if multiplayer.is_server():
+		http.post_json({"type": "chat", "sender":str(sender_id), "message": str(content)})

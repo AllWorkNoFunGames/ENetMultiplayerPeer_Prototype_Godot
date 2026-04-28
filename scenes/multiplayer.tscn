@@ -2,7 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bhxnqekxu06ty" path="res://src/network/multiplayer.gd" id="1_crvko"]
 [ext_resource type="PackedScene" uid="uid://cpd2gemwnev68" path="res://scenes/player.tscn" id="2_pjkx2"]
+[ext_resource type="Script" uid="uid://clgeq57ii6xbr" path="res://src/network/http.gd" id="3_pjkx2"]
 
 [node name="Multiplayer" type="Node" unique_id=1256054321]
 script = ExtResource("1_crvko")
 player_scene = ExtResource("2_pjkx2")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=395312308]
+max_redirects = 4
+timeout = 10.0
+script = ExtResource("3_pjkx2")
