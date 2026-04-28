@@ -46,6 +46,7 @@ func on_player_connected(id):
 	# Only the server should handle spawning logic
 	if multiplayer.is_server():
 		spawn_player(id)
+		sync_existing_players_to_peer(id)
 
 func on_player_disconnected(id):
 	if get_node_or_null(str(id)):
@@ -75,3 +76,33 @@ func retry_connection():
 	StartWrapper.print_to_chat("Retrying in 1 second...")
 	await get_tree().create_timer(1.0).timeout
 	join_game()
+
+func sync_existing_players_to_peer(peer_id: int) -> void:
+	var players_node = get_tree().current_scene.get_node("./Players")
+	for child in players_node.get_children():
+		if !child.name.is_valid_int():
+			continue
+		ensure_player_present.rpc_id(
+			peer_id,
+			int(child.name),
+			child.global_position,
+			str(child.get("prettyName")),
+			int(child.get("networkPlayerNumber"))
+		)
+
+@rpc("authority", "call_remote", "reliable")
+func ensure_player_present(id: int, spawn_position: Vector3, pretty_name: String, network_player_number: int) -> void:
+	# Server already owns authoritative spawning.
+	if multiplayer.is_server():
+		return
+
+	var players_node = get_tree().current_scene.get_node("./Players")
+	if players_node.get_node_or_null(str(id)):
+		return
+
+	var player = player_scene.instantiate()
+	player.name = str(id)
+	player.prettyName = pretty_name
+	player.networkPlayerNumber = network_player_number
+	players_node.add_child(player)
+	player.global_position = spawn_position
